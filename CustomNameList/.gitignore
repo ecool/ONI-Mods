@@ -36,6 +36,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+bin/Debug/
 
 # VSCode
 .vscode/

@@ -37,3 +37,11 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+# VSCode
+.vscode/
+
+# Nuget
+packages/
+
+# Custom namelist
+namelists.json

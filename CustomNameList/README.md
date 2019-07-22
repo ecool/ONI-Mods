@@ -24,6 +24,6 @@ Will be updated when released on Steam.
         "NB Name 1",
         "NB Name 2"
         // etc...
-    },
+    }
 }
 ```

@@ -4,8 +4,7 @@ Allows the use of custom name lists for Oxygen Not Included Duplicants.
 
 # To use
 Create `namelists.json` in the Mod `CustomNameList` directory. <br>
-ex: `%userprofile%\Documents\Klei\OxygenNotIncluded\mods\dev\CustomNameList` <br>
-Will be updated when released on Steam.
+ex: `%userprofile%\Documents\Klei\OxygenNotIncluded\mods\Steam\1811623834`
 
 # Example Name Lists
 ```json

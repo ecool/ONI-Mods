@@ -7,7 +7,7 @@ using System.IO;
 using Harmony;
 
 namespace FavoritesCategory {
-    public class FavoritesCategoryPatches{
+	public class FavoritesCategoryPatches{
 		// Global.GameInputManager - class GameInputManager : KInputManager
 		// KInputController KInputManager.GetDefaultController()
 		// KInputController.GetKeyDown(KKeyCode key_code)
@@ -32,7 +32,7 @@ namespace FavoritesCategory {
 					[04:59:46.878] [1] [INFO] SandStone
 					[04:59:47.607] [1] [INFO] Cuprite
 					[04:59:49.185] [1] [INFO] Algae
- 					*/
+					*/
 					Debug.Log(__instance.Resource);
 
 				}
@@ -86,6 +86,6 @@ namespace FavoritesCategory {
 			}
 			hashSet.Add(item_tag);
 		}
-		 */
-    }
+		*/
+	}
 }

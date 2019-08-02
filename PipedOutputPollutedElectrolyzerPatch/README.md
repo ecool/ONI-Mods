@@ -7,4 +7,4 @@ Create a Favorites Category for the Resource Listing on right side of screen.
 2. Hold Shift and Left Click to `Toggle` the `Element` to show up under Favorites.
 
 # Preview
-![Preview](imgs/preview.pnq)
+[Preview](imgs/preview.pnq)

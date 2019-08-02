@@ -58,17 +58,19 @@ namespace FavoritesCategory {
 				Tag favoritesTag = TagManager.Create("Favorites", "Favorites");
 
 
-				var test4 = Traverse.Create(__instance).Method("CreateTagSetHeaders", new[] { typeof(IEnumerable<Tag>), typeof(GameUtil.MeasureUnit) });
-				test4.GetValue(new TagSet{ favoritesTag }, GameUtil.MeasureUnit.mass);
+				var createTagSetHeaders = Traverse.Create(__instance).Method("CreateTagSetHeaders", new[] { typeof(IEnumerable<Tag>), typeof(GameUtil.MeasureUnit) });
+				createTagSetHeaders.GetValue(new TagSet{ favoritesTag }, GameUtil.MeasureUnit.mass);
 
-				var test5 = Traverse.Create(__instance).Field("DisplayedCategoryKeys");
+				var displayedCategories = Traverse.Create(__instance).Field("DisplayedCategoryKeys");
 				// TODO: figure out how to order `Favorites` on top of list
-				//var tags = new List<Tag>((Tag[]) test5.GetValue());
+				//var tags = new List<Tag>((Tag[]) displayedCategories.GetValue());
 				//tags.Insert(0, favoritesTag);
-				//test5.SetValue(tags.ToArray());
-				test5.SetValue(__instance.DisplayedCategories.Keys.ToArray<Tag>());
+				//displayedCategories.SetValue(tags.ToArray());
+				displayedCategories.SetValue(__instance.DisplayedCategories.Keys.ToArray<Tag>());
 				//private Tag[] DisplayedCategoryKeys
 
+
+				// keep our instance of favoritesCategoryHeader saved
 				__instance.DisplayedCategories.TryGetValue(favoritesTag, out favoritesCategoryHeader);
 				Debug.Log(favoritesCategoryHeader);
 

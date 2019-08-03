@@ -31,27 +31,26 @@ namespace FavoritesCategory {
 						favoritesCategoryHeader.ResourcesDiscovered.TryGetValue(tag, out resourceEntry);
 
 						HashSet<Tag> hashSet = null;
-						if (WorldInventory.Instance.TryGetDiscoveredResourcesFromTag(favoritesCategoryHeader.ResourceCategoryTag, out hashSet)) {
-							if (hashSet.Contains(tag)) {
-								// Toggle Off
-								// NOTE: removes resource tracking in Favorites category but still displays the button
-								hashSet.Remove(tag);
+						hashSet = WorldInventory.Instance.GetDiscoveredResourcesFromTag(favoritesCategoryHeader.ResourceCategoryTag);
 
-								if (resourceEntry != null) {
-									resourceEntry.gameObject.SetActive(false);
-								}
-							}else{
-								// Toggle On
-								// Activate the ResourceEntry
-								var discoverCat = Traverse.Create(WorldInventory.Instance).Method("DiscoverCategory", new[] { typeof(Tag), typeof(Tag) });
-								discoverCat.GetValue(favoritesCategoryHeader.ResourceCategoryTag, tag);
+						if (hashSet.Contains(tag)) {
+							//Debug.Log("Toggle: Off");
+							// NOTE: removes resource tracking in Favorites category but still displays the button
+							hashSet.Remove(tag);
 
-								if (resourceEntry != null) {
-									resourceEntry.gameObject.SetActive(true);
-								}
+							if (resourceEntry != null) {
+								resourceEntry.gameObject.SetActive(false);
+							}
+						}else{
+							//Debug.Log("Toggle: On");
+							// Activate the ResourceEntry
+							var discoverCat = Traverse.Create(WorldInventory.Instance).Method("DiscoverCategory", new[] { typeof(Tag), typeof(Tag) });
+							discoverCat.GetValue(favoritesCategoryHeader.ResourceCategoryTag, tag);
+
+							if (resourceEntry != null) {
+								resourceEntry.gameObject.SetActive(true);
 							}
 						}
-
 					}
 
 				}
@@ -64,8 +63,6 @@ namespace FavoritesCategory {
 		{
 			public static void Postfix(ResourceCategoryScreen __instance)
 			{
-				Debug.Log("--- ResourceCategoryScreen_OnActivate_Patch ---");
-
 				// Create Favorites tag
 				Tag favoritesTag = TagManager.Create("Favorites", "Favorites");
 
@@ -79,7 +76,6 @@ namespace FavoritesCategory {
 
 				// keep our instance of favoritesCategoryHeader saved
 				__instance.DisplayedCategories.TryGetValue(favoritesTag, out favoritesCategoryHeader);
-				Debug.Log(favoritesCategoryHeader);
 
 				// move Favorites to the top of the list
 				favoritesCategoryHeader.transform.SetAsFirstSibling();

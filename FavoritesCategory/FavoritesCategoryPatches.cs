@@ -5,7 +5,6 @@ using System.Text;
 using System.Reflection;
 using System.IO;
 using UnityEngine;
-using TMPro;
 using Harmony;
 
 namespace FavoritesCategory {
@@ -28,7 +27,6 @@ namespace FavoritesCategory {
 					Tag tag = (Tag) __instance.Resource;
 
 					if (favoritesCategoryHeader != null) {
-						Debug.Log(favoritesCategoryHeader.TextColor_Interactable);
 						ResourceEntry resourceEntry = null;
 						favoritesCategoryHeader.ResourcesDiscovered.TryGetValue(tag, out resourceEntry);
 
@@ -81,15 +79,6 @@ namespace FavoritesCategory {
 
 				// move Favorites to the top of the list
 				favoritesCategoryHeader.transform.SetAsFirstSibling();
-
-				// TODO: add customizable color
-				// NOTE: below doesn't work
-				//Color color = new Color(85f, 181f, 219f);
-				//favoritesCategoryHeader.TextColor_Interactable = color;
-				//Debug.Log(favoritesCategoryHeader.TextColor_Interactable);
-				//favoritesCategoryHeader.elements.LabelText.textStyleSetting.textColor = favoritesCategoryHeader.TextColor_Interactable;
-				//Traverse.Create(favoritesCategoryHeader).Method("SetActiveColor", new[] { typeof(bool) }).GetValue(true);
-				//favoritesCategoryHeader.elements.LabelText.color = color;
 			}
 		}
 	}

@@ -37,6 +37,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 bin/Debug/
+bin/Release/
 
 # VSCode
 .vscode/

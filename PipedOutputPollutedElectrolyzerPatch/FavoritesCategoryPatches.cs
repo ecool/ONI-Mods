@@ -28,7 +28,6 @@ namespace FavoritesCategory {
 
 					if (favoritesCategoryHeader != null) {
 						ResourceEntry resourceEntry = null;
-						favoritesCategoryHeader.ResourcesDiscovered.TryGetValue(tag, out resourceEntry);
 
 						HashSet<Tag> hashSet = null;
 						hashSet = WorldInventory.Instance.GetDiscoveredResourcesFromTag(favoritesCategoryHeader.ResourceCategoryTag);
@@ -38,6 +37,8 @@ namespace FavoritesCategory {
 							// NOTE: removes resource tracking in Favorites category but still displays the button
 							hashSet.Remove(tag);
 
+							favoritesCategoryHeader.ResourcesDiscovered.TryGetValue(tag, out resourceEntry);
+
 							if (resourceEntry != null) {
 								resourceEntry.gameObject.SetActive(false);
 							}
@@ -46,6 +47,22 @@ namespace FavoritesCategory {
 							// Activate the ResourceEntry
 							var discoverCat = Traverse.Create(WorldInventory.Instance).Method("DiscoverCategory", new[] { typeof(Tag), typeof(Tag) });
 							discoverCat.GetValue(favoritesCategoryHeader.ResourceCategoryTag, tag);
+
+							if(!favoritesCategoryHeader.ResourcesDiscovered.TryGetValue(tag, out resourceEntry)){
+								List<Tag> ts = WorldInventory.Instance.GetPickupableTagsFromCategoryTag(tag);
+								HashSet<Tag> tags = new HashSet<Tag>(ts);
+								Tag cat = WorldInventory.GetCategoryForTags(tags);
+								//Debug.Log("[Favorites] <ResourceEntry_OnClick> cat: " + cat);
+
+								GameUtil.MeasureUnit measure = GameUtil.MeasureUnit.mass;
+								if (GameTags.CalorieCategories.Contains(cat)) measure = GameUtil.MeasureUnit.kcal;
+								if (GameTags.UnitCategories.Contains(cat)) measure = GameUtil.MeasureUnit.quantity;
+
+								//Debug.Log("[Favorites] <ResourceEntry_OnClick> measure: " + measure);
+								var newResourceEntry = Traverse.Create(favoritesCategoryHeader).Method("NewResourceEntry", new[] { typeof(Tag), typeof(GameUtil.MeasureUnit) });
+								resourceEntry = newResourceEntry.GetValue<ResourceEntry>(tag, measure);
+								favoritesCategoryHeader.ResourcesDiscovered.Add(tag, resourceEntry);
+							}
 
 							if (resourceEntry != null) {
 								resourceEntry.gameObject.SetActive(true);

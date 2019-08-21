@@ -40,7 +40,9 @@ namespace FavoritesCategory {
 							favoritesCategoryHeader.ResourcesDiscovered.TryGetValue(tag, out resourceEntry);
 
 							if (resourceEntry != null) {
-								resourceEntry.gameObject.SetActive(false);
+								favoritesCategoryHeader.ResourcesDiscovered.Remove(tag);
+								resourceEntry.DeleteObject();
+								//resourceEntry.gameObject.SetActive(false);
 							}
 						}else{
 							//Debug.Log("Toggle: On");
@@ -64,7 +66,7 @@ namespace FavoritesCategory {
 								favoritesCategoryHeader.ResourcesDiscovered.Add(tag, resourceEntry);
 							}
 
-							if (resourceEntry != null) {
+							if (resourceEntry != null) { // NOTE: might no longer need this
 								resourceEntry.gameObject.SetActive(true);
 							}
 						}

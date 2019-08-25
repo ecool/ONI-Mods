@@ -14,13 +14,13 @@ public class NaturalTileConfig : IBuildingConfig
 
 	public override BuildingDef CreateBuildingDef()
 	{
-		string id = "NaturalTile";
+        string id = "NaturalTile";
 		int width = 1;
 		int height = 1;
 		string anim = "natural_tile_kanim";
 		int hitpoints = 100;
-		float construction_time = 5f;
-		float[] tier = BUILDINGS.CONSTRUCTION_MASS_KG.TIER1; // 50kg
+		float construction_time = BuildableNaturalTile.BuildableNaturalTilePatches.Settings.BuildSpeed;
+		float[] tier = new float[] { BuildableNaturalTile.BuildableNaturalTilePatches.Settings.BuildMass }; // 50kg
 		string[] raw_MINERALS = new string[] {"Solid"}; // currently set to all solids
 		float melting_point = 1600f;
 		BuildLocationRule build_location_rule = BuildLocationRule.Anywhere;

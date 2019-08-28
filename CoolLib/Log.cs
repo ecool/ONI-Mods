@@ -30,38 +30,25 @@ namespace CoolLib {
         {
             if (_mods.TryGetValue(GetModName(), out Mod mod))
             {
-                if (CheckLevel(mod, loglevel)) {
-                    Debug.Log($"{mod.LogLevel} == {loglevel}");
+                if (CheckLevel(mod, loglevel)) { // Only do output if the LogLevel is right
                     Console.WriteLine($"{Timestamp()} <<CoolLib>> #{mod.ShortName} @{CallingClassName()}: [{loglevel.ToString()}] {msg}");
                 }
             }
         }
 
+        // Log Methods
         public static void LogDebug(string msg) => WriteLog(msg, LogLevel.DEBUG);
         public static void LogInfo(string msg) => WriteLog(msg, LogLevel.INFO);
         public static void LogWarn(string msg) => WriteLog(msg, LogLevel.WARN);
 
-        public static string CallingClassName()
-        {
-            var methodInfo = new StackTrace().GetFrame(3).GetMethod();
-            return methodInfo.ReflectedType.Name;
-        }
-
         public static bool CheckLevel(Mod mod, LogLevel loglevel) => mod.LogLevel >= loglevel;
 
-        private static int GetModBuild()
-        {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-            return fvi.FileBuildPart;
-        }
+        // Extra Info
+        public static string CallingClassName() => new StackTrace().GetFrame(3).GetMethod().ReflectedType.Name; // BUG: Might be causing issues with MacOS
+        private static int GetModBuild() => GetInfo().FileBuildPart;
+        private static string GetModName() => GetInfo().ProductName;
+        private static FileVersionInfo GetInfo() => FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
 
-        private static string GetModName()
-        {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-            return fvi.ProductName;
-        }
         // SEE: CaiLib.Logger.Logger
         private static string Timestamp() => System.DateTime.UtcNow.ToString("[HH:mm:ss.fff]");
     }

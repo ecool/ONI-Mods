@@ -88,8 +88,7 @@
           <AssemblyInfoFiles Include="Properties\AssemblyInfo.cs" />
       </ItemGroup>
       <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)"
-        AssemblyFileBuildNumberType="YearWeekDay" FirstDayOfWeek="Sunday"
-        AssemblyFileRevisionType="AutoIncrement" AssemblyFileRevisionFormat="00" />
+        AssemblyFileBuildNumberType="Julian" AssemblyFileRevisionType="AutoIncrement" />
   </Target>
 
   <!-- Build Events -->

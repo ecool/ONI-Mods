@@ -16,14 +16,14 @@ namespace CoolLib {
             #endif
             string modname = GetModName();
             _mods.Add(modname, new Mod(modname, shortname, loglevel));
-            LogInfo($"{modname} - #{shortname} initialized with log level {loglevel.ToString()}.");
+            LogInfo($"{modname} v{GetModBuild()} - #{shortname} initialized with log level {loglevel.ToString()}.");
         }
 
         public static void LogInit(string shortname, LogLevel loglevel)
         {
             string modname = GetModName();
             _mods.Add(modname, new Mod(modname, shortname, loglevel));
-            LogInfo($"{modname} initialized set to [{loglevel.ToString()}].");
+            LogInfo($"{modname} v{GetModBuild()} - #{shortname} initialized with log level {loglevel.ToString()}.");
         }
 
         public static void WriteLog(string msg, LogLevel loglevel)
@@ -48,6 +48,13 @@ namespace CoolLib {
         }
 
         public static bool CheckLevel(Mod mod, LogLevel loglevel) => mod.LogLevel >= loglevel;
+
+        private static int GetModBuild()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            return fvi.FileBuildPart;
+        }
 
         private static string GetModName()
         {

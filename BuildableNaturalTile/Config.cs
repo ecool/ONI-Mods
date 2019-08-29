@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Newtonsoft.Json;
@@ -6,7 +7,7 @@ namespace BuildableNaturalTile
 {
     public class Config
     {
-        private readonly static string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase), "config.json");
+        private readonly static string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "config.json");
         public float BuildMass { get; set; }
         public float BlockMass { get; set; }
         public float BuildSpeed { get; set; }
@@ -20,12 +21,50 @@ namespace BuildableNaturalTile
 
 		public static Config Load()
 		{
-			var json = File.ReadAllText(path);
-			// var json = @"{
-			//     ServerAddress: null,
-			// 	ServerPort: null,
-			// 	ServerTimeout: null }";
-		    return JsonConvert.DeserializeObject<Config>(json);
+			string json = null;
+			Config newConfig = null;
+			bool dirty = false;
+
+			Dictionary<string, int> defaults = new Dictionary<string, int>(){
+					{ "BuildMass", 50 },
+					{ "BlockMass", 50 },
+					{ "BuildSpeed", 3 }
+				};
+
+			if (!File.Exists(path)) {
+				dirty = true;
+				json = @"{
+					BuildMass: 50,
+					BlockMass: 50,
+					BuildSpeed: 3
+					}";
+			} else {
+				json = File.ReadAllText(path);
+			}
+			newConfig = JsonConvert.DeserializeObject<Config>(json);
+			Debug.Log(newConfig);
+			// below is very ugly, make dynamic eventually
+			if (newConfig.BuildMass == 0) {
+				newConfig.BuildMass = defaults["BuildMass"];
+				dirty = true;
+			}
+			if (newConfig.BlockMass == 0) {
+				newConfig.BlockMass = defaults["BlockMass"];
+				dirty = true;
+			}
+			if (newConfig.BuildSpeed == 0) {
+				newConfig.BuildSpeed = defaults["BuildSpeed"];
+				dirty = true;
+			}
+
+			if (dirty) newConfig.Save();
+
+		    return newConfig;
 		}
     }
 }
+// {
+//     "BuildMass": 50,   // kg
+//     "BlockMass": 50,   // kg
+//     "BuildSpeed": 5    // 3 - Tile, 10 - Ladder, 30 - Farm Tile
+// }

@@ -1,5 +1,0 @@
-{
-    "BuildMass": 50,   // kg
-    "BlockMass": 50,   // kg
-    "BuildSpeed": 5    // 3 - Tile, 10 - Ladder, 30 - Farm Tile
-}

@@ -4,14 +4,14 @@ using UnityEngine;
 using CaiLib.Utils;
 using static CaiLib.Utils.BuildingUtils;
 using static CaiLib.Utils.StringUtils;
+using CoolLib;
 using static CoolLib.Log;
 
 namespace BuildableNaturalTile {
-    // TODO: refactor all LogDebug "BuildableNaturalTile", to CoolLib.Log
     public static class BuildableNaturalTilePatches {
-        public static void OnLoad() => LogInit("BuildableNaturalTile", true);
+        public static Config Settings = Config.Load(); // Load Settings from Config <CoolLib>
 
-        public static Config Settings = Config.Load();
+        public static void OnLoad() => LogInit("BNT"); // Initialize mod logs <CoolLib>
 
         [HarmonyPatch(typeof(GeneratedBuildings), "LoadGeneratedBuildings")]
         public static class GeneratedBuildings_LoadGeneratedBuildings_Patch
@@ -51,7 +51,7 @@ namespace BuildableNaturalTile {
             {
                 GameObject go = __instance.gameObject;
                 if(__instance.name == "NaturalTileComplete"){
-                    LogDebug("BuildableNaturalTile", "<BuildingComplete_OnSpawn> __instance.name: " + __instance.name);
+                    LogDebug($"__instance.name: {__instance.name}");
 
                     Vector3 pos = go.transform.position;
                     PrimaryElement element = go.GetComponent<PrimaryElement>();
@@ -60,13 +60,13 @@ namespace BuildableNaturalTile {
                     int cell = Grid.PosToCell(pos);
                     SimMessages.ReplaceAndDisplaceElement(cell, element.ElementID, null, mass, temperature, byte.MaxValue, 0, -1); // spawn Dirt Block
 
-                    LogDebug("BuildableNaturalTile", $"<BuildingComplete_OnSpawn> pos: {pos}, temperature: {temperature}, cell: {cell}");
+                    LogDebug($"pos: {pos}, temperature: {temperature}, cell: {cell}");
 
                     // NOTE: Displace pickupables needs to be watched for possibly slowing down the game during late game
                     int origCell = cell;
                     foreach (Pickupable pickupable in Components.Pickupables){
                         if (Grid.PosToCell(pickupable) == origCell){
-                            LogDebug("BuildableNaturalTile", $"<BuildingComplete_OnSpawn> pickupable: {pickupable}");
+                            LogDebug($"pickupable: {pickupable}");
 
                             for (int i=0; i<_displacementOffsets.Length; i++){
                                 int offsetCell = Grid.OffsetCell(cell, _displacementOffsets[i]);

@@ -50,6 +50,25 @@
                     ]
                 }
             }
+        },
+        {
+            "label": "nuget restore", // restore nuget packages
+            "type": "shell",
+            "command": "nuget restore",
+            "args": [],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [
+                        "/d", "/c"
+                    ]
+                }
+            }
         }
     ]
 }

@@ -16,14 +16,14 @@ namespace CoolLib {
             #endif
             string modname = GetModName();
             _mods.Add(modname, new Mod(modname, shortname, loglevel));
-            LogInfo($"{modname} v{GetModBuild()} - #{shortname} initialized with log level {loglevel.ToString()}.");
+            LogInfo($"{modname} v{GetModVersion()} - #{shortname} initialized with log level {loglevel.ToString()}");
         }
 
         public static void LogInit(string shortname, LogLevel loglevel)
         {
             string modname = GetModName();
             _mods.Add(modname, new Mod(modname, shortname, loglevel));
-            LogInfo($"{modname} v{GetModBuild()} - #{shortname} initialized with log level {loglevel.ToString()}.");
+            LogInfo($"{modname} v{GetModVersion()} - #{shortname} initialized with log level {loglevel.ToString()}");
         }
 
         public static void WriteLog(string msg, LogLevel loglevel)
@@ -44,8 +44,8 @@ namespace CoolLib {
         public static bool CheckLevel(Mod mod, LogLevel loglevel) => mod.LogLevel >= loglevel;
 
         // Extra Info
-        public static string CallingClassName() => new StackTrace().GetFrame(3).GetMethod().ReflectedType.Name; // BUG: Might be causing issues with MacOS
-        private static int GetModBuild() => GetInfo().FileBuildPart;
+        public static string CallingClassName() => new StackTrace().GetFrame(4).GetMethod().ReflectedType.Name; // BUG: Might be causing issues with MacOS
+        private static string GetModVersion() => GetInfo().FileVersion;
         private static string GetModName() => GetInfo().ProductName;
         private static FileVersionInfo GetInfo() => FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
 

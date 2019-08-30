@@ -80,6 +80,7 @@
       <Name>CoolLib</Name>
    </ProjectReference>
   </ItemGroup>
+
   <!-- Files -->
   <ItemGroup>
     <Compile Include="FavoritesCategoryPatches.cs" />

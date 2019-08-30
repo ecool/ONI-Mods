@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Harmony;
 
 namespace CustomNameList {
+
     [HarmonyPatch(typeof(CharacterContainer), "SetInfoText")]
     public class CustomNameList{
         public static NameList names;
@@ -37,7 +38,7 @@ namespace CustomNameList {
 				name.SetValue(names.Next(gender_val));
 
 				Debug.Log("Name changed from `" + old_name + "` => `" + name.GetValue() + "`");
-				
+
 			}
         }
     }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,7 @@ using UnityEngine;
 using Harmony;
 
 namespace FavoritesCategory {
-	public class FavoritesCategoryPatches{
+	public static class FavoritesCategoryPatches {
 		public static ResourceCategoryHeader favoritesCategoryHeader = null;
 
 		[HarmonyPatch(typeof(ResourceEntry), "OnClick")]

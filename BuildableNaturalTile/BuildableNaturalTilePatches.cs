@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Harmony;
 using UnityEngine;
 using CaiLib.Utils;

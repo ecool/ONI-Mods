@@ -19,8 +19,8 @@ public class DirtTileConfig : IBuildingConfig
 		int height = 1;
 		string anim = "dirt_tile_kanim";
 		int hitpoints = 100;
-		float construction_time = 5f;
-		float[] tier = BUILDINGS.CONSTRUCTION_MASS_KG.TIER1; // 50kg
+		float construction_time = BuildableDirtTile.BuildableDirtTilePatches.Settings.BuildSpeed;
+		float[] tier = new float[] { BuildableDirtTile.BuildableDirtTilePatches.Settings.BuildMass };  // 50kg
 		string[] raw_MINERALS = new string[] {SimHashes.Dirt.ToString()}; // only buildable with Dirt
 		float melting_point = 1600f;
 		BuildLocationRule build_location_rule = BuildLocationRule.Anywhere;

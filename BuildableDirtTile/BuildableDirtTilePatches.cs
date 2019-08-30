@@ -8,6 +8,8 @@ using static CaiLib.Utils.StringUtils;
 namespace BuildableDirtTile {
     public class BuildableDirtTilePatches {
 
+        public static Config Settings = Config.Load();
+
         [HarmonyPatch(typeof(GeneratedBuildings), "LoadGeneratedBuildings")]
         public static class GeneratedBuildings_LoadGeneratedBuildings_Patch
         {
@@ -51,7 +53,7 @@ namespace BuildableDirtTile {
 
                     Vector3 pos = go.transform.position;
                     float temperature = go.GetComponent<PrimaryElement>().Temperature;
-                    float mass = 50f; // 50kg
+                    float mass = Settings.BlockMass; // 50kg
                     byte disease_idx = byte.MaxValue;
                     int cell = Grid.PosToCell(pos);
                     SimMessages.ReplaceAndDisplaceElement(cell, SimHashes.Dirt, null, mass, temperature, disease_idx, 0, -1); // spawn Dirt Block

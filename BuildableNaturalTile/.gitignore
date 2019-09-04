@@ -39,6 +39,7 @@ sysinfo.txt
 bin/
 
 # VSCode
+*.code-workspace
 # .vscode/ # stop ignoring
 
 # Nuget

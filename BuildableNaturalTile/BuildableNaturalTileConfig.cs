@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using TUNING;
 using UnityEngine;
+using STRINGS;
 
 public class NaturalTileConfig : IBuildingConfig
 {
     public const string ID = "NaturalTile";
     public const string DisplayName = "Natural Tile";
-    public const string Description = "Natural Tile Description";
-    public const string Effect = "";
+    public const string Description = "Fill that hole you dug out back in with any solid element.";
+    public static string Effect = $"Fills a block in the world with {UI.FormatAsLink("Solids", "ELEMENTS_SOLID")}.";
 
 	public static readonly int BlockTileConnectorID = Hash.SDBMLower("natural_tile_block");
 
@@ -25,7 +26,7 @@ public class NaturalTileConfig : IBuildingConfig
 		float melting_point = 1600f;
 		BuildLocationRule build_location_rule = BuildLocationRule.Anywhere;
 		EffectorValues none = NOISE_POLLUTION.NONE;
-		BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tier, raw_MINERALS, melting_point, build_location_rule, BUILDINGS.DECOR.BONUS.TIER0, none, 0.2f);
+		BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tier, raw_MINERALS, melting_point, build_location_rule, TUNING.BUILDINGS.DECOR.BONUS.TIER0, none, 0.2f);
 		BuildingTemplates.CreateFoundationTileDef(buildingDef);
 		buildingDef.Floodable = false;
 		buildingDef.Entombable = false;

@@ -42,7 +42,7 @@ namespace BuildableNaturalTile
 				json = File.ReadAllText(path);
 			}
 			newConfig = JsonConvert.DeserializeObject<Config>(json);
-			Debug.Log(newConfig);
+
 			// below is very ugly, make dynamic eventually
 			if (newConfig.BuildMass == 0) {
 				newConfig.BuildMass = defaults["BuildMass"];

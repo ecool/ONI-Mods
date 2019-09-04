@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <!-- Vars -->
@@ -109,7 +109,7 @@
       ilmerge /wildcards /out:$(TargetName)-merged.dll $(TargetName).dll $(ProjectDir)vendor\*.dll $(ReleaseDir)CoolLib\CoolLib.dll /targetplatform:v2,C:/Windows/Microsoft.NET/Framework64/v2.0.50727
 
       echo F | xcopy /Y /S /R /Q "$(TargetDir)$(TargetName)-merged.dll" "$(ReleaseDir)$(TargetName)\$(TargetName)-merged.dll"
-      IF EXIST "$(ProjectDir)anims" xcopy /Y /R /I /E /Q  "$(ProjectDir)anims" "$(ReleaseDir)$(TargetName)\anims"
+      IF EXIST "$(ProjectDir)anim" xcopy /Y /R /I /E /Q  "$(ProjectDir)anim" "$(ReleaseDir)$(TargetName)\anim"
       IF EXIST "$(ProjectDir)config.json" echo F | xcopy /Y /S /R /Q "$(ProjectDir)config.json" "$(ReleaseDir)$(TargetName)\config.json"
       IF EXIST "$(ProjectDir)imgs\preview.png" echo F | xcopy /Y /S /R /Q "$(ProjectDir)imgs\preview.png" "$(ReleaseDir)previews\$(TargetName).png"
 

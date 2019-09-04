@@ -1,14 +1,16 @@
-﻿using System;
+using System;
 using Harmony;
 using UnityEngine;
 using CaiLib.Utils;
 using static CaiLib.Utils.BuildingUtils;
 using static CaiLib.Utils.StringUtils;
+using static CoolLib.Log;
 
 namespace BuildableDirtTile {
     public class BuildableDirtTilePatches {
-
         public static Config Settings = Config.Load();
+
+        public static void OnLoad() => LogInit("BDT");
 
         [HarmonyPatch(typeof(GeneratedBuildings), "LoadGeneratedBuildings")]
         public static class GeneratedBuildings_LoadGeneratedBuildings_Patch

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using STRINGS;
 using TUNING;
 using UnityEngine;
 
@@ -7,8 +8,8 @@ public class DirtTileConfig : IBuildingConfig
 {
     public const string ID = "DirtTile";
     public const string DisplayName = "Dirt Tile";
-    public const string Description = "Dirt Tile Description";
-    public const string Effect = "";
+    public static string Description = $"Fill that hole you dug out back in with {UI.FormatAsLink("Dirt", "DIRT")}.";
+    public static string Effect = $"Fills a block in the world with {UI.FormatAsLink("Dirt", "DIRT")}.";
 
 	public static readonly int BlockTileConnectorID = Hash.SDBMLower("dirt_tile_block");
 
@@ -25,7 +26,7 @@ public class DirtTileConfig : IBuildingConfig
 		float melting_point = 1600f;
 		BuildLocationRule build_location_rule = BuildLocationRule.Anywhere;
 		EffectorValues none = NOISE_POLLUTION.NONE;
-		BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tier, raw_MINERALS, melting_point, build_location_rule, BUILDINGS.DECOR.BONUS.TIER0, none, 0.2f);
+		BuildingDef buildingDef = BuildingTemplates.CreateBuildingDef(id, width, height, anim, hitpoints, construction_time, tier, raw_MINERALS, melting_point, build_location_rule, TUNING.BUILDINGS.DECOR.BONUS.TIER0, none, 0.2f);
 		BuildingTemplates.CreateFoundationTileDef(buildingDef);
 		buildingDef.Floodable = false;
 		buildingDef.Entombable = false;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15"
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <!-- Vars -->
   <PropertyGroup>
@@ -15,7 +16,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CoolLib</RootNamespace>
     <AssemblyName>CoolLib</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -38,20 +39,19 @@
   </PropertyGroup>
 
   <!-- Imports -->
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
-    Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 
   <!-- References -->
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\vendor\ONI\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\vendor\ONI-DLC\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\vendor\ONI\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\vendor\ONI-DLC\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\vendor\ONI\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>..\..\..\vendor\ONI-DLC\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,10 +60,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\vendor\ONI\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\vendor\ONI-DLC\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\vendor\ONI\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\vendor\ONI-DLC\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -87,8 +87,7 @@
     <ItemGroup>
       <AssemblyInfoFiles Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
-    <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)"
-      AssemblyFileBuildNumberType="Julian" AssemblyFileRevisionType="AutoIncrement" />
+    <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" AssemblyFileBuildNumberType="Julian" AssemblyFileRevisionType="AutoIncrement" />
   </Target>
 
   <!-- Build Events -->

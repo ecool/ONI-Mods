@@ -1,7 +1,5 @@
-namespace CoolLib
-{
-    public class Mod
-    {
+namespace CoolLib {
+    public class Mod {
         public string Name;
         public string ShortName;
         public LogLevel LogLevel;

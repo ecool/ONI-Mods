@@ -10,7 +10,7 @@
             "args": [
                 "/t:Build",
                 "/p:Configuration=Debug",
-                "/p:TargetFramework=net35"
+                "/p:TargetFramework=net40"
             ],
             "group": "build",
             "presentation": {
@@ -23,7 +23,8 @@
                 "shell": { // workaround for using WSL as vscode terminal.
                     "executable": "cmd.exe",
                     "args": [
-                        "/d", "/c"
+                        "/d",
+                        "/c"
                     ]
                 }
             }
@@ -35,7 +36,7 @@
             "args": [
                 "/t:Build",
                 "/p:Configuration=Release",
-                "/p:TargetFramework=net35"
+                "/p:TargetFramework=net40"
             ],
             "group": "build",
             "presentation": {
@@ -46,7 +47,8 @@
                 "shell": {
                     "executable": "cmd.exe",
                     "args": [
-                        "/d", "/c"
+                        "/d",
+                        "/c"
                     ]
                 }
             }
@@ -65,7 +67,8 @@
                 "shell": {
                     "executable": "cmd.exe",
                     "args": [
-                        "/d", "/c"
+                        "/d",
+                        "/c"
                     ]
                 }
             }

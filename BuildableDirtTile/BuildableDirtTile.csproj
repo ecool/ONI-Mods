@@ -15,7 +15,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BuildableDirtTile</RootNamespace>
     <AssemblyName>BuildableDirtTile</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RuntimeIdentifiers>win</RuntimeIdentifiers>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -45,13 +46,13 @@
   <!-- References -->
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\vendor\ONI\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\vendor\ONI-DLC\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\vendor\ONI\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\vendor\ONI-DLC\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\vendor\ONI\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>..\..\..\vendor\ONI-DLC\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,10 +61,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\vendor\ONI\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\vendor\ONI-DLC\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\vendor\ONI\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\vendor\ONI-DLC\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\vendor\project\packages\Newtonsoft.Json.12.0.2\lib\net35\Newtonsoft.Json.dll</HintPath>
@@ -96,17 +97,16 @@
 
   <!-- Targets -->
   <Target Name="BeforeBuild">
-      <ItemGroup>
-          <AssemblyInfoFiles Include="Properties\AssemblyInfo.cs" />
-      </ItemGroup>
-      <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)"
-        AssemblyFileBuildNumberType="Julian" AssemblyFileRevisionType="AutoIncrement" />
+    <ItemGroup>
+      <AssemblyInfoFiles Include="Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" AssemblyFileBuildNumberType="DateString" AssemblyFileBuildNumberFormat="yyMMdd" AssemblyFileRevisionType="AutoIncrement" />
   </Target>
 
   <!-- Build Events -->
   <PropertyGroup>
     <PostBuildEvent>
-      ilmerge /wildcards /out:$(TargetName)-merged.dll $(TargetName).dll $(ProjectDir)vendor\*.dll $(ReleaseDir)CoolLib\CoolLib.dll /targetplatform:v2,C:/Windows/Microsoft.NET/Framework64/v2.0.50727
+      ilmerge /wildcards /out:$(TargetName)-merged.dll $(TargetName).dll $(ProjectDir)vendor\*.dll $(ReleaseDir)CoolLib\CoolLib.dll /targetplatform:v2,C:/Windows/Microsoft.NET/Framework64/v4.0.30319
 
       echo F | xcopy /Y /S /R /Q "$(TargetDir)$(TargetName)-merged.dll" "$(ReleaseDir)$(TargetName)\$(TargetName)-merged.dll"
       IF EXIST "$(ProjectDir)anim" xcopy /Y /R /I /E /Q  "$(ProjectDir)anim" "$(ReleaseDir)$(TargetName)\anim"

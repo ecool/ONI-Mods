@@ -17,10 +17,6 @@ Allows building a natural elemental block.
 
 # Known Issues
 
-- Blocks can no longer be built on top of pickupables
-- Blocks cause an error when building over certain tiles/blocks
-- Blocks cause an error to randomly occur after a natural block is spawned
-
 # Preview
 
 ![Preview](imgs/preview.png)

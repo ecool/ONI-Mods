@@ -114,7 +114,7 @@
   <!-- Build Events -->
   <PropertyGroup>
     <PostBuildEvent>
-      ilmerge /wildcards /out:$(TargetName)-merged.dll $(TargetName).dll $(ProjectDir)vendor\*.dll $(ReleaseDir)CoolLib\CoolLib.dll /targetplatform:v2,C:/Windows/Microsoft.NET/Framework64/v2.0.50727
+      ilmerge /wildcards /out:$(TargetName)-merged.dll $(TargetName).dll $(ProjectDir)vendor\*.dll $(ReleaseDir)CoolLib\CoolLib.dll /targetplatform:v4,C:/Windows/Microsoft.NET/Framework64/v4.0.30319
 
       echo F | xcopy /Y /S /R /Q "$(TargetDir)$(TargetName)-merged.dll" "$(ReleaseDir)$(TargetName)\$(TargetName)-merged.dll"
       IF EXIST "$(ProjectDir)anim" xcopy /Y /R /I /E /Q  "$(ProjectDir)anim" "$(ReleaseDir)$(TargetName)\anim"

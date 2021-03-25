@@ -28,19 +28,23 @@ public class NaturalTileConfig : IBuildingConfig {
             id, width, height, anim, hitpoints, construction_time, tier,
             raw_MINERALS, melting_point, build_location_rule,
             TUNING.BUILDINGS.DECOR.BONUS.TIER0, none, 0.2f);
-        BuildingTemplates.CreateFoundationTileDef(buildingDef);
-        buildingDef.Floodable = false;
-        buildingDef.Entombable = false;
-        buildingDef.Overheatable = false;
-        buildingDef.ForegroundLayer = Grid.SceneLayer.BuildingBack;
-        buildingDef.AudioCategory = "HollowMetal";
-        buildingDef.AudioSize = "small";
-        buildingDef.BaseTimeUntilRepair = -1f;
-        buildingDef.SceneLayer = Grid.SceneLayer.TileMain;
-        buildingDef.ConstructionOffsetFilter = BuildingDef.ConstructionOffsetFilter_OneDown;
-        buildingDef.isSolidTile = false;
-        buildingDef.DragBuild = true;
-        buildingDef.ObjectLayer = ObjectLayer.Building;
+
+        // NOTE: not sure if any of this stuff is still needed, but errors no
+        // longer happen without the code below
+
+        // BuildingTemplates.CreateFoundationTileDef(buildingDef);
+        // buildingDef.Floodable = false;
+        // buildingDef.Entombable = false;
+        // buildingDef.Overheatable = false;
+        // buildingDef.ForegroundLayer = Grid.SceneLayer.BuildingBack;
+        // buildingDef.AudioCategory = "HollowMetal";
+        // buildingDef.AudioSize = "small";
+        // buildingDef.BaseTimeUntilRepair = -1f;
+        // buildingDef.SceneLayer = Grid.SceneLayer.TileMain;
+        // buildingDef.ConstructionOffsetFilter = BuildingDef.ConstructionOffsetFilter_OneDown;
+        // buildingDef.isSolidTile = false;
+        // buildingDef.DragBuild = true;
+        // buildingDef.ObjectLayer = ObjectLayer.Building;
         return buildingDef;
     }
 

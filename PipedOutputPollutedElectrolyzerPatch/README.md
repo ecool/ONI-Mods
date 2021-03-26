@@ -1,17 +1,10 @@
-# FavoritesCategory
+# PipedOutputPollutedElectrolyzerPatch
 
-Create a Favorites Category for the Resource Listing on right side of screen.
-
-# Features
-* Stays through Save/Load
+A patch to add `PipedOutput` to `PollutedElectrolyzer`.
 
 # How To Use
-1. Mouse-Over the Resource, AKA `Element`, in the Resource Listing on the right side of the Screen, AKA `The Inventory`.
-2. Hold Shift and Click the Left Mouse Button to `Toggle` the `Element` to show up under Favorites.
+* This mod needs to be loaded after `PipedOutput` and `PollutedElectrolyzer` in the Mods Page.
 
-# Current Limitations
-* Resources only shown in `Mass`. ie: `Seeds`/`Food` show up as weight instead of `Quantity`/`kcal` respectively
-* Individual Games. (You will need to re-add Resources to the Category per Game)
-
-# Preview
-![Preview](imgs/preview.png)
+# References
+* [PipedOutput](https://github.com/Nightinggale/ONI-mods/tree/master/src/PipedOutput) by [@Nightinggale](https://github.com/Nightinggale)
+* [PollutedElectrolyzer](https://github.com/Pholith/ONI-Mods/tree/master/src/PollutedElectrolyzer) by [@Pholith](https://github.com/Pholith)

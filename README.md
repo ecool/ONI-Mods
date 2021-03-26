@@ -9,4 +9,4 @@ Repo for all of my Oxygen Not Included mods.
 - [PipedOutputPollutedElectrolyzerPatch](PipedOutputPollutedElectrolyzerPatch) (Vanilla)
 
 ## Library
-- CoolLib (shared code for mods)
+- [CoolLib](CoolLib) (shared code for mods)

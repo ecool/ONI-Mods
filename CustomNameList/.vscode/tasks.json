@@ -9,13 +9,11 @@
             "command": "msbuild",
             "args": [
                 "/t:Build",
-                "/p:Configuration=Debug",
-                "/p:TargetFramework=net35"
+                "/p:Configuration=Debug"
             ],
             "group": "build",
             "presentation": {
-                // Reveal the output only if unrecognized errors occur.
-                "reveal": "silent"
+                "reveal": "always"
             },
             // Use the standard MS compiler pattern to detect errors, warnings and infos
             "problemMatcher": "$msCompile",
@@ -23,7 +21,8 @@
                 "shell": { // workaround for using WSL as vscode terminal.
                     "executable": "cmd.exe",
                     "args": [
-                        "/d", "/c"
+                        "/d",
+                        "/c"
                     ]
                 }
             }
@@ -34,19 +33,19 @@
             "command": "msbuild",
             "args": [
                 "/t:Build",
-                "/p:Configuration=Release",
-                "/p:TargetFramework=net35"
+                "/p:Configuration=Release"
             ],
             "group": "build",
             "presentation": {
-                "reveal": "silent"
+                "reveal": "always"
             },
             "problemMatcher": "$msCompile",
             "options": {
                 "shell": {
                     "executable": "cmd.exe",
                     "args": [
-                        "/d", "/c"
+                        "/d",
+                        "/c"
                     ]
                 }
             }
@@ -58,14 +57,35 @@
             "args": [],
             "group": "build",
             "presentation": {
-                "reveal": "silent"
+                "reveal": "always"
             },
             "problemMatcher": "$msCompile",
             "options": {
                 "shell": {
                     "executable": "cmd.exe",
                     "args": [
-                        "/d", "/c"
+                        "/d",
+                        "/c"
+                    ]
+                }
+            }
+        },
+        {
+            "label": "msbuild restore", // restore msbuild packages
+            "type": "shell",
+            "command": "msbuild /restore",
+            "args": [],
+            "group": "build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile",
+            "options": {
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [
+                        "/d",
+                        "/c"
                     ]
                 }
             }

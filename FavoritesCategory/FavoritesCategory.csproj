@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project
+  ToolsVersion="15.0"
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <!-- Vars -->
   <PropertyGroup>
     <ReleaseDir Condition=" '$(ReleaseDir)' == '' ">E:\releases\</ReleaseDir>
+    <DevDir Condition=" '$(DevDir)' == '' ">C:\Users\$(USERNAME)\Documents\Klei\OxygenNotIncluded\mods\dev\</DevDir>
   </PropertyGroup>
 
   <!-- Build Configurations -->
@@ -15,7 +18,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FavoritesCategory</RootNamespace>
     <AssemblyName>FavoritesCategory</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -38,20 +41,21 @@
   </PropertyGroup>
 
   <!-- Imports -->
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+  <Import
+    Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
     Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 
   <!-- References -->
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\vendor\ONI\0Harmony.dll</HintPath>
+      <HintPath>..\vendor\ONI\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\vendor\ONI\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\vendor\ONI\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\vendor\ONI\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>..\vendor\ONI\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,25 +64,19 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\vendor\ONI\UnityEngine.dll</HintPath>
+      <HintPath>..\vendor\ONI\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\vendor\ONI\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\vendor\ONI\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-    <!-- <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\vendor\project\packages\Newtonsoft.Json.12.0.2\lib\net35\Newtonsoft.Json.dll</HintPath>
-    </Reference> -->
-    <!-- <Reference Include="CaiLib">
-      <HintPath>vendor\CaiLib.dll</HintPath>
-    </Reference> -->
   </ItemGroup>
 
   <!-- Project References -->
   <ItemGroup>
-   <ProjectReference Include="..\CoolLib\CoolLib.csproj">
+    <ProjectReference Include="..\CoolLib\CoolLib.csproj">
       <Project>{EF507047-16B4-4884-9C74-C073BB63E028}</Project>
       <Name>CoolLib</Name>
-   </ProjectReference>
+    </ProjectReference>
   </ItemGroup>
 
   <!-- Files -->
@@ -89,16 +87,23 @@
 
   <!-- Nuget Packages -->
   <ItemGroup>
-    <PackageReference Include="MSBuild.Extension.Pack" Version="1.9.1" />
+    <PackageReference
+      Include="Newtonsoft.Json"
+      Version="12.0.2" />
+    <PackageReference
+      Include="MSBuild.Extension.Pack"
+      Version="1.9.1" />
   </ItemGroup>
 
   <!-- Targets -->
   <Target Name="BeforeBuild">
-      <ItemGroup>
-          <AssemblyInfoFiles Include="Properties\AssemblyInfo.cs" />
-      </ItemGroup>
-      <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)"
-        AssemblyFileBuildNumberType="Julian" AssemblyFileRevisionType="AutoIncrement" />
+    <ItemGroup>
+      <AssemblyInfoFiles Include="Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+    <MSBuild.ExtensionPack.Framework.AssemblyInfo
+      AssemblyInfoFiles="@(AssemblyInfoFiles)"
+      AssemblyFileBuildNumberType="Julian"
+      AssemblyFileRevisionType="AutoIncrement" />
   </Target>
 
   <!-- Build Events -->
@@ -111,7 +116,7 @@
       IF EXIST "$(ProjectDir)config.json" echo F | xcopy /Y /S /R /Q "$(ProjectDir)config.json" "$(ReleaseDir)$(TargetName)\config.json"
       IF EXIST "$(ProjectDir)imgs\preview.png" echo F | xcopy /Y /S /R /Q "$(ProjectDir)imgs\preview.png" "$(ReleaseDir)previews\$(TargetName).png"
 
-      xcopy /Y /R  /I /Q  /E "$(ReleaseDir)$(TargetName)" "C:\Users\ecool\Documents\Klei\OxygenNotIncluded\mods\dev\$(TargetName)"
-    </PostBuildEvent>
+      xcopy /Y /R  /I /Q  /E "$(ReleaseDir)$(TargetName)" "$(DevDir)$(TargetName)"
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

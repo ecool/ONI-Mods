@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15"
+<Project
+  ToolsVersion="15"
   xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <!-- Vars -->
@@ -39,19 +40,21 @@
   </PropertyGroup>
 
   <!-- Imports -->
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import
+    Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+    Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 
   <!-- References -->
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\vendor\ONI-DLC\0Harmony.dll</HintPath>
+      <HintPath>..\vendor\ONI-DLC\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\vendor\ONI-DLC\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\vendor\ONI-DLC\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\vendor\ONI-DLC\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>..\vendor\ONI-DLC\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,10 +63,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\vendor\ONI-DLC\UnityEngine.dll</HintPath>
+      <HintPath>..\vendor\ONI-DLC\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\vendor\ONI-DLC\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\vendor\ONI-DLC\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -76,10 +79,12 @@
 
   <!-- Nuget Packages -->
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="MSBuild.Extension.Pack" Version="1.9.1" />
+    <PackageReference
+      Include="Newtonsoft.Json"
+      Version="12.0.2" />
+    <PackageReference
+      Include="MSBuild.Extension.Pack"
+      Version="1.9.1" />
   </ItemGroup>
 
   <!-- Targets -->
@@ -87,13 +92,16 @@
     <ItemGroup>
       <AssemblyInfoFiles Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
-    <MSBuild.ExtensionPack.Framework.AssemblyInfo AssemblyInfoFiles="@(AssemblyInfoFiles)" AssemblyFileBuildNumberType="Julian" AssemblyFileRevisionType="AutoIncrement" />
+    <MSBuild.ExtensionPack.Framework.AssemblyInfo
+      AssemblyInfoFiles="@(AssemblyInfoFiles)"
+      AssemblyFileBuildNumberType="Julian"
+      AssemblyFileRevisionType="AutoIncrement" />
   </Target>
 
   <!-- Build Events -->
   <PropertyGroup>
     <PostBuildEvent>
       echo F | xcopy /Y /S /R /Q "$(TargetDir)$(TargetName).dll" "$(ReleaseDir)$(TargetName)\$(TargetName).dll"
-    </PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

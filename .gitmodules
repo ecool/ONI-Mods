@@ -7,3 +7,6 @@
 [submodule "CoolLib"]
 	path = CoolLib
 	url = https://github.com/ecool/CoolLib.git
+[submodule "CustomNameList"]
+	path = CustomNameList
+	url = https://github.com/ecool/CustomNameList.git

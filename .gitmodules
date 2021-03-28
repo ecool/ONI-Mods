@@ -13,3 +13,6 @@
 [submodule "FavoritesCategory"]
 	path = FavoritesCategory
 	url = https://github.com/ecool/FavoritesCategory.git
+[submodule "PipedOutputPollutedElectrolyzerPatch"]
+	path = PipedOutputPollutedElectrolyzerPatch
+	url = https://github.com/ecool/PipedOutputPollutedElectrolyzerPatch.git

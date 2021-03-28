@@ -1,3 +1,6 @@
 [submodule "BuildableDirtTile"]
 	path = BuildableDirtTile
 	url = https://github.com/ecool/BuildableDirtTile.git
+[submodule "BuildableNaturalTile"]
+	path = BuildableNaturalTile
+	url = https://github.com/ecool/BuildableNaturalTile.git

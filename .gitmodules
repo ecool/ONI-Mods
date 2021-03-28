@@ -10,3 +10,6 @@
 [submodule "CustomNameList"]
 	path = CustomNameList
 	url = https://github.com/ecool/CustomNameList.git
+[submodule "FavoritesCategory"]
+	path = FavoritesCategory
+	url = https://github.com/ecool/FavoritesCategory.git

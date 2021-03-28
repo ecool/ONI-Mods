@@ -4,3 +4,6 @@
 [submodule "BuildableNaturalTile"]
 	path = BuildableNaturalTile
 	url = https://github.com/ecool/BuildableNaturalTile.git
+[submodule "CoolLib"]
+	path = CoolLib
+	url = https://github.com/ecool/CoolLib.git

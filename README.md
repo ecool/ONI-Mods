@@ -2,14 +2,14 @@
 Repo for all of my Oxygen Not Included mods.
 
 ## Mods
-- [BuildableDirtTile](BuildableDirtTile) (DLC, Vanilla)
-- [BuildableNaturalTile](BuildableNaturalTile) (DLC, Vanilla)
-- [CustomNameList](CustomNameList) (Vanilla)
-- [FavoritesCategory](FavoritesCategory) (Vanilla)
-- [PipedOutputPollutedElectrolyzerPatch](PipedOutputPollutedElectrolyzerPatch) (Vanilla)
+- [BuildableDirtTile](https://github.com/ecool/BuildableDirtTile) (DLC, Vanilla)
+- [BuildableNaturalTile](https://github.com/ecool/BuildableNaturalTile) (DLC, Vanilla)
+- [CustomNameList](https://github.com/ecool/CustomNameList) (Vanilla)
+- [FavoritesCategory](https://github.com/ecool/FavoritesCategory) (Vanilla)
+- [PipedOutputPollutedElectrolyzerPatch](https://github.com/ecool/PipedOutputPollutedElectrolyzerPatch) (Vanilla)
 
 ## Library
-- [CoolLib](CoolLib) (shared code for mods)
+- [CoolLib](https://github.com/ecool/CoolLib) (shared code for mods)
 
 ## Third Party DLLs (Mod/vendor)
 - [CaiLib](https://github.com/Cairath/ONI-Mods/tree/master/src/CaiLib): Required for BuildableDirtTile and BuildableNaturalTile
